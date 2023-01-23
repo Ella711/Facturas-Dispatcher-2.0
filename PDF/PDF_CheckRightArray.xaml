@@ -1,0 +1,767 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="CheckRightArray" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_ArrayLength" Type="InArgument(x:String)" />
+    <x:Property Name="in_PDFArray" Type="InArgument(s:String[])" />
+    <x:Property Name="out_Acueducto" Type="OutArgument(x:String)" />
+    <x:Property Name="out_OtrosCobros" Type="OutArgument(x:String)" />
+    <x:Property Name="out_Alcantarillado" Type="OutArgument(x:String)" />
+    <x:Property Name="out_TotalAAA" Type="OutArgument(x:String)" />
+    <x:Property Name="out_Aseo" Type="OutArgument(x:String)" />
+    <x:Property Name="io_TotalAPagar" Type="InOutArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1335,827</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>CheckRightArray_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="25">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="38">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="CheckRightArray" sap:VirtualizedContainerService.HintSize="559,521" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="497,101" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;Checking third and last array for extracton&quot;]" />
+    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[in_ArrayLength]" sap:VirtualizedContainerService.HintSize="497,258" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+      <Switch.Default>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;In default case&quot;]" />
+      </Switch.Default>
+      <Sequence x:Key="18" sap:VirtualizedContainerService.HintSize="493,1371" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign DisplayName="Assign Acueducto" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_7">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_Acueducto]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(7).Split(" ")(2)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Assign Otros Cobros" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_8">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(7).Split(" ")(3)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <If Condition="[out_OtrosCobros.Contains(&quot;-&quot;)]" sap:VirtualizedContainerService.HintSize="431,363" sap2010:WorkflowViewState.IdRef="If_6">
+          <If.Then>
+            <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_76">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[out_OtrosCobros.Replace("-", "")]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Then>
+        </If>
+        <Assign DisplayName="Assign Alcantarillado" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_9">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_Alcantarillado]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(13).Split(" ")(2)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Assign TotalAAA" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_10">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_TotalAAA]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(17).Split(" ")(0)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:MultipleAssign DisplayName="Clean Data" sap:VirtualizedContainerService.HintSize="431,265" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+          <ui:MultipleAssign.AssignOperations>
+            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_22">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Acueducto]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_Acueducto.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_23">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_OtrosCobros.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_24">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Alcantarillado]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_Alcantarillado.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[io_TotalAPagar]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[io_TotalAPagar.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_TotalAAA]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_TotalAAA.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Aseo]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[(Cint(io_TotalAPagar) - CInt(out_TotalAAA)).ToString]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+            </scg:List>
+          </ui:MultipleAssign.AssignOperations>
+        </ui:MultipleAssign>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="431,101" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Acueducto: &quot; + out_Acueducto + vbCrLf +&#xA;&quot;Otros Cobros: &quot; + out_OtrosCobros + vbCrLf +&#xA;&quot;Alcantarillado: &quot; + out_Alcantarillado + vbCrLf +&#xA;&quot;Total AAA: &quot; + out_TotalAAA + vbCrLf +&#xA;&quot;Aseo: &quot; + out_Aseo]" />
+      </Sequence>
+      <Sequence x:Key="14" sap:VirtualizedContainerService.HintSize="493,1371" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign DisplayName="Assign Acueducto" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_27">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_Acueducto]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(5).Split(" ")(2)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Assign Otros Cobros" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_28">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(5).Split(" ")(3)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <If Condition="[out_OtrosCobros.Contains(&quot;-&quot;)]" sap:VirtualizedContainerService.HintSize="431,363" sap2010:WorkflowViewState.IdRef="If_1">
+          <If.Then>
+            <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_31">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[out_OtrosCobros.Replace("-", "")]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Then>
+        </If>
+        <Assign DisplayName="Assign Alcantarillado" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_29">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_Alcantarillado]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(9).Split(" ")(2)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Assign TotalAAA" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_30">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_TotalAAA]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(13).Split(" ")(0)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:MultipleAssign DisplayName="Clean Data" sap:VirtualizedContainerService.HintSize="431,265" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
+          <ui:MultipleAssign.AssignOperations>
+            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_25">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Acueducto]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_Acueducto.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_26">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_OtrosCobros.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_27">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Alcantarillado]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_Alcantarillado.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_28">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[io_TotalAPagar]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[io_TotalAPagar.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_29">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_TotalAAA]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_TotalAAA.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_30">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Aseo]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[(Cint(io_TotalAPagar) - CInt(out_TotalAAA)).ToString]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+            </scg:List>
+          </ui:MultipleAssign.AssignOperations>
+        </ui:MultipleAssign>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="431,101" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Acueducto: &quot; + out_Acueducto + vbCrLf +&#xA;&quot;Otros Cobros: &quot; + out_OtrosCobros + vbCrLf +&#xA;&quot;Alcantarillado: &quot; + out_Alcantarillado + vbCrLf +&#xA;&quot;Total AAA: &quot; + out_TotalAAA + vbCrLf +&#xA;&quot;Aseo: &quot; + out_Aseo]" />
+      </Sequence>
+      <Sequence x:Key="13" sap:VirtualizedContainerService.HintSize="493,1365" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="NumeroFactura" />
+          <Variable x:TypeArguments="x:String" Name="TotalAPagar" />
+          <Variable x:TypeArguments="x:String" Name="FechaPagoOportuno" />
+          <Variable x:TypeArguments="x:String" Name="FechaSuspension" />
+          <Variable x:TypeArguments="x:String" Name="PeriodoFacturado" />
+          <Variable x:TypeArguments="x:String" Name="ProximaFactura" />
+          <Variable x:TypeArguments="x:String" Name="Acueducto" />
+          <Variable x:TypeArguments="x:String" Name="OtrosCobros" />
+          <Variable x:TypeArguments="x:String" Name="Alcantarillado" />
+          <Variable x:TypeArguments="x:String" Name="TotalAAA" />
+          <Variable x:TypeArguments="x:String" Name="Aseo" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign DisplayName="Assign Acueducto" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_38">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_Acueducto]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(4).Split(" ")(2)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Assign Otros Cobros" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_39">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(4).Split(" ")(3)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <If Condition="[out_OtrosCobros.Contains(&quot;-&quot;)]" sap:VirtualizedContainerService.HintSize="431,363" sap2010:WorkflowViewState.IdRef="If_2">
+          <If.Then>
+            <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_40">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[out_OtrosCobros.Replace("-", "")]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Then>
+        </If>
+        <Assign DisplayName="Assign Alcantarillado" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_41">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_Alcantarillado]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(8).Split(" ")(2)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Assign TotalAAA" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_42">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_TotalAAA]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(12).Split(" ")(0)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:MultipleAssign DisplayName="Clean Data" sap:VirtualizedContainerService.HintSize="431,265" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
+          <ui:MultipleAssign.AssignOperations>
+            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_31">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Acueducto]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_Acueducto.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_32">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_OtrosCobros.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_33">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Alcantarillado]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_Alcantarillado.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_34">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[io_TotalAPagar]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[io_TotalAPagar.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_35">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_TotalAAA]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_TotalAAA.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_36">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Aseo]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[(Cint(io_TotalAPagar) - CInt(out_TotalAAA)).ToString]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+            </scg:List>
+          </ui:MultipleAssign.AssignOperations>
+        </ui:MultipleAssign>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="431,101" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Acueducto: &quot; + out_Acueducto + vbCrLf +&#xA;&quot;Otros Cobros: &quot; + out_OtrosCobros + vbCrLf +&#xA;&quot;Alcantarillado: &quot; + out_Alcantarillado + vbCrLf +&#xA;&quot;Total AAA: &quot; + out_TotalAAA + vbCrLf +&#xA;&quot;Aseo: &quot; + out_Aseo]" />
+      </Sequence>
+      <Sequence x:Key="20" sap:VirtualizedContainerService.HintSize="493,1365" sap2010:WorkflowViewState.IdRef="Sequence_8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign DisplayName="Assign Acueducto" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_49">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_Acueducto]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(5).Split(" ")(2)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Assign Otros Cobros" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_50">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(5).Split(" ")(3)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <If Condition="[out_OtrosCobros.Contains(&quot;-&quot;)]" sap:VirtualizedContainerService.HintSize="431,363" sap2010:WorkflowViewState.IdRef="If_3">
+          <If.Then>
+            <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_69">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[out_OtrosCobros.Replace("-", "")]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Then>
+        </If>
+        <Assign DisplayName="Assign Alcantarillado" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_51">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_Alcantarillado]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(10).Split(" ")(2)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Assign TotalAAA" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_52">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_TotalAAA]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(14).Split(" ")(0)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:MultipleAssign DisplayName="Clean Data" sap:VirtualizedContainerService.HintSize="431,265" sap2010:WorkflowViewState.IdRef="MultipleAssign_10">
+          <ui:MultipleAssign.AssignOperations>
+            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_37">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Acueducto]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_Acueducto.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_38">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_OtrosCobros.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_39">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Alcantarillado]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_Alcantarillado.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_40">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[io_TotalAPagar]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[io_TotalAPagar.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_41">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_TotalAAA]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_TotalAAA.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_42">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Aseo]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[(Cint(io_TotalAPagar) - CInt(out_TotalAAA)).ToString]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+            </scg:List>
+          </ui:MultipleAssign.AssignOperations>
+        </ui:MultipleAssign>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="431,101" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Acueducto: &quot; + out_Acueducto + vbCrLf +&#xA;&quot;Otros Cobros: &quot; + out_OtrosCobros + vbCrLf +&#xA;&quot;Alcantarillado: &quot; + out_Alcantarillado + vbCrLf +&#xA;&quot;Total AAA: &quot; + out_TotalAAA + vbCrLf +&#xA;&quot;Aseo: &quot; + out_Aseo]" />
+      </Sequence>
+      <Sequence x:Key="16" sap:VirtualizedContainerService.HintSize="493,1365" sap2010:WorkflowViewState.IdRef="Sequence_9">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="NumeroFactura" />
+          <Variable x:TypeArguments="x:String" Name="TotalAPagar" />
+          <Variable x:TypeArguments="x:String" Name="FechaPagoOportuno" />
+          <Variable x:TypeArguments="x:String" Name="FechaSuspension" />
+          <Variable x:TypeArguments="x:String" Name="PeriodoFacturado" />
+          <Variable x:TypeArguments="x:String" Name="ProximaFactura" />
+          <Variable x:TypeArguments="x:String" Name="Acueducto" />
+          <Variable x:TypeArguments="x:String" Name="OtrosCobros" />
+          <Variable x:TypeArguments="x:String" Name="Alcantarillado" />
+          <Variable x:TypeArguments="x:String" Name="TotalAAA" />
+          <Variable x:TypeArguments="x:String" Name="Aseo" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign DisplayName="Assign Acueducto" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_59">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_Acueducto]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(6).Split(" ")(2)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Assign Otros Cobros" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_60">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(6).Split(" ")(3)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <If Condition="[out_OtrosCobros.Contains(&quot;-&quot;)]" sap:VirtualizedContainerService.HintSize="431,363" sap2010:WorkflowViewState.IdRef="If_4">
+          <If.Then>
+            <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_70">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[out_OtrosCobros.Replace("-", "")]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Then>
+        </If>
+        <Assign DisplayName="Assign Alcantarillado" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_61">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_Alcantarillado]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(11).Split(" ")(2)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Assign TotalAAA" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_62">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_TotalAAA]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(15).Split(" ")(0)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:MultipleAssign DisplayName="Clean Data" sap:VirtualizedContainerService.HintSize="431,265" sap2010:WorkflowViewState.IdRef="MultipleAssign_11">
+          <ui:MultipleAssign.AssignOperations>
+            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_43">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Acueducto]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_Acueducto.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_44">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_OtrosCobros.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_45">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Alcantarillado]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_Alcantarillado.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_46">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[io_TotalAPagar]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[io_TotalAPagar.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_47">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_TotalAAA]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_TotalAAA.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_48">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Aseo]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[(Cint(io_TotalAPagar) - CInt(out_TotalAAA)).ToString]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+            </scg:List>
+          </ui:MultipleAssign.AssignOperations>
+        </ui:MultipleAssign>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="431,101" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Acueducto: &quot; + out_Acueducto + vbCrLf +&#xA;&quot;Otros Cobros: &quot; + out_OtrosCobros + vbCrLf +&#xA;&quot;Alcantarillado: &quot; + out_Alcantarillado + vbCrLf +&#xA;&quot;Total AAA: &quot; + out_TotalAAA + vbCrLf +&#xA;&quot;Aseo: &quot; + out_Aseo]" />
+      </Sequence>
+      <Sequence x:Key="19" sap:VirtualizedContainerService.HintSize="493,1365" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="NumeroFactura" />
+          <Variable x:TypeArguments="x:String" Name="TotalAPagar" />
+          <Variable x:TypeArguments="x:String" Name="FechaPagoOportuno" />
+          <Variable x:TypeArguments="x:String" Name="FechaSuspension" />
+          <Variable x:TypeArguments="x:String" Name="PeriodoFacturado" />
+          <Variable x:TypeArguments="x:String" Name="ProximaFactura" />
+          <Variable x:TypeArguments="x:String" Name="Acueducto" />
+          <Variable x:TypeArguments="x:String" Name="OtrosCobros" />
+          <Variable x:TypeArguments="x:String" Name="Alcantarillado" />
+          <Variable x:TypeArguments="x:String" Name="TotalAAA" />
+          <Variable x:TypeArguments="x:String" Name="Aseo" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign DisplayName="Assign Acueducto" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_71">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_Acueducto]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(7).Split(" ")(2)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Assign Otros Cobros" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_72">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(7).Split(" ")(3)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <If Condition="[out_OtrosCobros.Contains(&quot;-&quot;)]" sap:VirtualizedContainerService.HintSize="431,363" sap2010:WorkflowViewState.IdRef="If_5">
+          <If.Then>
+            <Assign sap:VirtualizedContainerService.HintSize="262,70" sap2010:WorkflowViewState.IdRef="Assign_73">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[out_OtrosCobros.Replace("-", "")]</InArgument>
+              </Assign.Value>
+            </Assign>
+          </If.Then>
+        </If>
+        <Assign DisplayName="Assign Alcantarillado" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_74">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_Alcantarillado]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(14).Split(" ")(2)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign DisplayName="Assign TotalAAA" sap:VirtualizedContainerService.HintSize="431,70" sap2010:WorkflowViewState.IdRef="Assign_75">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[out_TotalAAA]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[in_PDFArray(18).Split(" ")(0)]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:MultipleAssign DisplayName="Clean Data" sap:VirtualizedContainerService.HintSize="431,265" sap2010:WorkflowViewState.IdRef="MultipleAssign_12">
+          <ui:MultipleAssign.AssignOperations>
+            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_49">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Acueducto]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_Acueducto.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_50">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_OtrosCobros]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_OtrosCobros.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_51">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Alcantarillado]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_Alcantarillado.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_52">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[io_TotalAPagar]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[io_TotalAPagar.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_53">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_TotalAAA]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[out_TotalAAA.Replace("$", "").Replace(".", "")]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_54">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:String">[out_Aseo]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:String">[(Cint(io_TotalAPagar) - CInt(out_TotalAAA)).ToString]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+            </scg:List>
+          </ui:MultipleAssign.AssignOperations>
+        </ui:MultipleAssign>
+        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="431,101" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Acueducto: &quot; + out_Acueducto + vbCrLf +&#xA;&quot;Otros Cobros: &quot; + out_OtrosCobros + vbCrLf +&#xA;&quot;Alcantarillado: &quot; + out_Alcantarillado + vbCrLf +&#xA;&quot;Total AAA: &quot; + out_TotalAAA + vbCrLf +&#xA;&quot;Aseo: &quot; + out_Aseo]" />
+      </Sequence>
+    </Switch>
+  </Sequence>
+</Activity>
