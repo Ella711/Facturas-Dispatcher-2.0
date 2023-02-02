@@ -10,7 +10,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>781,2754</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1309,2754</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckNativePDF_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -141,15 +141,9 @@
           <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="363,101" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;PDF is not Native. Proceeding Extraction with CV.&quot;]" />
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="PDF_CV\PDF-CV_CaptureInfoFromFacturas.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="363,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="PDF_CV\PDF-CV_CaptureInfoFromFacturas.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_PDFFile">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PDFFile" />
-              </InArgument>
-              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_Facturas">
-                <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_dt_Facturas" />
-              </InOutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_SeparadasOrumPath">
-                <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SeparadasOrumPath" />
-              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PDFFile">[in_PDFFile]</InArgument>
+              <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_Facturas">[io_dt_Facturas]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_SeparadasOrumPath">[in_SeparadasOrumPath]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
